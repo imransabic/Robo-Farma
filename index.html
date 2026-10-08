@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>ROBO FARMA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= EDITOR ================= -->
+<div id="screen-editor" class="screen active">
+  <div class="editor-wrap">
+    <h1>ROBO <span>FARMA</span></h1>
+    <p class="sub">Napravi svog radnog robota</p>
+
+    <div class="editor-grid">
+      <div class="robot-stage">
+        <div id="robotPreview"></div>
+        <input id="charName" maxlength="12" placeholder="IME ROBOTA" value="R-01">
+      </div>
+      <div class="customize">
+        <div class="cgroup"><label>Tijelo</label><div class="swatches" id="sw-body"></div></div>
+        <div class="cgroup"><label>Glava</label><div class="swatches" id="sw-head"></div></div>
+        <div class="cgroup"><label>Detalji</label><div class="swatches" id="sw-accent"></div></div>
+        <div class="cgroup"><label>Oči / Svjetla</label><div class="swatches" id="sw-eye"></div></div>
+      </div>
+    </div>
+
+    <button class="play-btn" id="playBtn">▶ PLAY</button>
+  </div>
+</div>
+
+<!-- ================= GAME ================= -->
+<div id="screen-game" class="screen">
+  <header class="top">
+    <div class="avatar-mini" id="miniAvatar"></div>
+    <div class="hinfo">
+      <div class="money-row">
+        <div class="money" id="moneyEl">0 <small>€</small></div>
+        <div style="font-size:11px;color:var(--muted)" id="rateEl">+0/s</div>
+      </div>
+      <div class="xpwrap"><div class="xpbar" id="xpBar"></div></div>
+      <div class="lvtag">Nivo <b id="lvEl">1</b> · <span id="xpTxt">0 / 60</span></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- FARMA TAB -->
+    <div id="tab-farm">
+      <div class="section-title"><span>🚜 Farme</span><span id="farmHint"></span></div>
+      <div class="farms" id="farmsEl"></div>
+
+      <div class="section-title">
+        <span>⚙️ Mašine</span>
+        <button class="btn small" id="autoAssignBtn">Auto raspored</button>
+      </div>
+      <div id="machinesEl"></div>
+    </div>
+
+    <!-- GRAD TAB -->
+    <div id="tab-city" style="display:none">
+      <div class="section-title"><span>🏙️ Grad — Prodavnica mašina</span></div>
+      <div class="grid2" id="shopEl"></div>
+    </div>
+
+    <!-- ALATI TAB -->
+    <div id="tab-tools" style="display:none">
+      <div class="section-title"><span>🧰 Alati i nadogradnje</span></div>
+      <div class="grid2" id="toolsEl"></div>
+
+      <div class="section-title"><span>📊 Statistika</span></div>
+      <div style="background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px">
+        <div class="statbox"><span>Ukupno zarađeno</span><span id="stTotal">0 €</span></div>
+        <div class="statbox"><span>Zarada u sekundi</span><span id="stRate">0 €</span></div>
+        <div class="statbox"><span>Broj mašina</span><span id="stMachines">0</span></div>
+        <div class="statbox"><span>Multiplikator brzine</span><span id="stSpeed">x1.00</span></div>
+        <div class="statbox"><span>Multiplikator zarade</span><span id="stEarn">x1.00</span></div>
+        <div class="statbox"><span>Odigrano</span><span id="stPlay">0 min</span></div>
+      </div>
+      <div style="height:16px"></div>
+      <button class="btn wide" id="resetBtn" style="background:linear-gradient(180deg,#ff7b7b,#c23b3b);color:#2a0505">🗑️ RESETUJ IGru</button>
+      <div style="height:20px"></div>
+    </div>
+  </main>
+
+  <nav class="tabs">
+    <button data-tab="farm" class="on"><span class="ic">🚜</span>FARMA</button>
+    <button data-tab="city"><span class="ic">🏙️</span>GRAD</button>
+    <button data-tab="tools"><span class="ic">🧰</span>ALATI</button>
+  </nav>
+</div>
+
+<div id="toasts"></div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
